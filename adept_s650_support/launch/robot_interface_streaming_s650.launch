@@ -1,0 +1,24 @@
+
+<!--
+  Manipulator specific version of 'robot_interface_streaming.launch'.
+
+  Defaults provided for Adept s650:
+   - use_bswap = true
+   - 6 joints
+
+  Usage:
+    robot_interface_streaming_s650.launch robot_ip:=<value>
+
+-->
+<launch>
+  <arg name="robot_ip" />
+  <arg name="use_bswap" default="true" />
+
+  <rosparam command="load" file="$(find adept_s650_support)/config/joint_names_s650.yaml" />
+
+  <!-- <include file="$(find adept_driver)/launch/robot_interface_streaming.launch">
+    <arg name="robot_ip"   value="$(arg robot_ip)" />
+    <arg name="use_bswap"  value="$(arg use_bswap)" />
+  </include> -->
+
+</launch>

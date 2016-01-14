@@ -1,0 +1,194 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://ros.org/wiki/xacro">
+  <xacro:macro name="adept_s650" params="prefix">
+    <!-- link list -->
+    <link name="${prefix}base_link">
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://adept_s650_support/meshes/s650/visual/base_link.stl"/>
+        </geometry>
+        <material name="White">
+          <color rgba="255 255 255 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://adept_s650_support/meshes/s650/collision/base_link.stl"/>
+        </geometry>
+        <material name="Blue">
+          <color rgba="0 0 255 1.0"/>
+        </material>
+      </collision>
+    </link>
+    <link name="${prefix}link_1">
+      <visual>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://adept_s650_support/meshes/s650/visual/link_1.stl"/>
+        </geometry>
+        <material name="White">
+          <color rgba="255 255 255 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 0 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://adept_s650_support/meshes/s650/collision/link_1.stl"/>
+        </geometry>
+        <material name="Blue">
+          <color rgba="0 0 255 1.0"/>
+        </material>
+      </collision>
+    </link>
+    <link name="${prefix}link_2">
+      <visual>
+        <origin rpy="0 1.5714 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://adept_s650_support/meshes/s650/visual/link_2.stl"/>
+        </geometry>
+        <material name="White">
+          <color rgba="255 255 255 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 1.5714 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://adept_s650_support/meshes/s650/collision/link_2.stl"/>
+        </geometry>
+        <material name="Blue">
+          <color rgba="0 0 255 1.0"/>
+        </material>
+      </collision>
+    </link>
+    <link name="${prefix}link_3">
+      <visual>
+        <origin rpy="0 -1.5714 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://adept_s650_support/meshes/s650/visual/link_3.stl"/>
+        </geometry>
+        <material name="White">
+          <color rgba="255 255 255 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 -1.5714 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://adept_s650_support/meshes/s650/collision/link_3.stl"/>
+        </geometry>
+        <material name="Blue">
+          <color rgba="0 0 255 1.0"/>
+        </material>
+      </collision>
+    </link>
+    <link name="${prefix}link_4">
+      <visual>
+        <origin rpy="0 -1.5714 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://adept_s650_support/meshes/s650/visual/link_4.stl"/>
+        </geometry>
+        <material name="White">
+          <color rgba="255 255 255 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 -1.5714 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://adept_s650_support/meshes/s650/collision/link_4.stl"/>
+        </geometry>
+        <material name="Blue">
+          <color rgba="0 0 255 1.0"/>
+        </material>
+      </collision>
+    </link>
+    <link name="${prefix}link_5">
+      <visual>
+        <origin rpy="0 -1.5714 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://adept_s650_support/meshes/s650/visual/link_5.stl"/>
+        </geometry>
+        <material name="White">
+          <color rgba="255 255 255 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 -1.5714 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://adept_s650_support/meshes/s650/collision/link_5.stl"/>
+        </geometry>
+        <material name="Blue">
+          <color rgba="0 0 255 1.0"/>
+        </material>
+      </collision>
+    </link>
+    <link name="${prefix}link_6">
+      <visual>
+        <origin rpy="0 -1.5714 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://adept_s650_support/meshes/s650/visual/link_6.stl"/>
+        </geometry>
+        <material name="Gray">
+          <color rgba="100 100 100 1.0"/>
+        </material>
+      </visual>
+      <collision>
+        <origin rpy="0 -1.5714 0" xyz="0 0 0"/>
+        <geometry>
+          <mesh filename="package://adept_s650_support/meshes/s650/collision/link_6.stl"/>
+        </geometry>
+        <material name="Blue">
+          <color rgba="0 0 255 1.0"/>
+        </material>
+      </collision>
+    </link>
+    <!-- end of linke list -->
+
+    <!-- joint list -->
+    <joint name="${prefix}joint_1" type="revolute">
+      <origin xyz="0 0 0.203"/>
+      <parent link="${prefix}base_link"/>
+      <child link="${prefix}link_1"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="100" lower="-2.9670" upper="2.9670" velocity="5.72468"/>
+    </joint>
+    <joint name="${prefix}joint_2" type="revolute">
+      <origin xyz="0.074 0 0.18795"/>
+      <parent link="${prefix}link_1"/>
+      <child link="${prefix}link_2"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="100" lower="-3.31613" upper="0.7854" velocity="5.235"/>
+    </joint>
+    <joint name="${prefix}joint_3" type="revolute">
+      <origin xyz="0.270 0 0"/>
+      <parent link="${prefix}link_2"/>
+      <child link="${prefix}link_3"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="100" lower="-0.50615" upper="4.468053" velocity="6.544"/>
+    </joint>
+    <joint name="${prefix}joint_4" type="revolute">
+      <origin xyz="-0.090 0 0.295"/>
+      <parent link="${prefix}link_3"/>
+      <child link="${prefix}link_4"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="100" lower="-3.31613" upper="3.316133" velocity="6.544"/>
+    </joint>
+    <joint name="${prefix}joint_5" type="revolute">
+      <origin xyz="0 0 0"/>
+      <parent link="${prefix}link_4"/>
+      <child link="${prefix}link_5"/>
+      <axis xyz="0 1 0"/>
+      <limit effort="100" lower="-2.0944" upper="2.0944" velocity="6.544"/>
+    </joint>
+    <joint name="${prefix}joint_6" type="revolute">
+      <origin xyz="0.0 0 0.08"/>
+      <parent link="${prefix}link_5"/>
+      <child link="${prefix}link_6"/>
+      <axis xyz="0 0 1"/>
+      <limit effort="100" lower="-3.1416" upper="3.1416" velocity="10.47"/>
+    </joint>
+    <!-- end of joint list -->
+
+    <!-- ROS base_link to Adept World Coordinates transform - if necessary -->
+  </xacro:macro>
+</robot>

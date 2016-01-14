@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+
+<robot name="adept_s650" xmlns:xacro="http://ros.org/wiki/xacro">
+	<xacro:include filename="$(find adept_s650_support)/urdf/s650_macro.xacro"/>
+	<xacro:adept_s650 prefix=""/>
+</robot>
