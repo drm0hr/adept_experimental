@@ -1,0 +1,8 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: adept_s650_support
+    relative_path: urdf/s650.urdf
+  SRDF:
+    relative_path: config/adept_s650.srdf
+  CONFIG:
+    generated_timestamp: 1453152579

@@ -8,8 +8,8 @@
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/visual/base_link.stl"/>
         </geometry>
-        <material name="White">
-          <color rgba="255 255 255 1.0"/>
+        <material name="Grey">
+          <color rgba="128 128 128 1.0"/>
         </material>
       </visual>
       <collision>
@@ -28,8 +28,8 @@
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/visual/link_1.stl"/>
         </geometry>
-        <material name="White">
-          <color rgba="255 255 255 1.0"/>
+        <material name="Grey">
+          <color rgba="128 128 128 1.0"/>
         </material>
       </visual>
       <collision>
@@ -48,8 +48,8 @@
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/visual/link_2.stl"/>
         </geometry>
-        <material name="White">
-          <color rgba="255 255 255 1.0"/>
+        <material name="Grey">
+          <color rgba="128 128 128 1.0"/>
         </material>
       </visual>
       <collision>
@@ -68,8 +68,8 @@
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/visual/link_3.stl"/>
         </geometry>
-        <material name="White">
-          <color rgba="255 255 255 1.0"/>
+        <material name="Grey">
+          <color rgba="128 128 128 1.0"/>
         </material>
       </visual>
       <collision>
@@ -88,8 +88,8 @@
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/visual/link_4.stl"/>
         </geometry>
-        <material name="White">
-          <color rgba="255 255 255 1.0"/>
+        <material name="Grey">
+          <color rgba="128 128 128 1.0"/>
         </material>
       </visual>
       <collision>
@@ -108,8 +108,8 @@
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/visual/link_5.stl"/>
         </geometry>
-        <material name="White">
-          <color rgba="255 255 255 1.0"/>
+        <material name="Grey">
+          <color rgba="128 128 128 1.0"/>
         </material>
       </visual>
       <collision>
