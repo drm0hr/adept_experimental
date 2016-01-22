@@ -29,7 +29,7 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#include "adept_common/joint_trajectory_handler.h"
+#include "adept_driver/joint_trajectory_handler.h"
 #include "simple_message/messages/joint_message.h"
 #include "simple_message/smpl_msg_connection.h"
 
@@ -63,7 +63,7 @@ JointTrajectoryHandler::JointTrajectoryHandler(ros::NodeHandle &n, SmplMsgConnec
 }
 
 JointTrajectoryHandler::~JointTrajectoryHandler()
-{  
+{
   trajectoryStop();
   this->sub_joint_tranectory_.shutdown();
   delete this->trajectoryHandler_;
@@ -128,7 +128,7 @@ void JointTrajectoryHandler::trajectoryHandler()
 
     if (this->robot_->isConnected())
     {
-      
+
       //TODO: These variables should be moved outside of this loop
       //so that we aren't contantly reinitializing them.
       JointMessage jMsg;
@@ -147,14 +147,14 @@ void JointTrajectoryHandler::trajectoryHandler()
           {
 	          ROS_INFO("Streaming joints point[%d]", this->currentPoint);
             pt = this->current_traj_.points[this->currentPoint];
-            
+
             jMsg.setSequence(this->currentPoint);
 
             for (int i = 0; i < this->current_traj_.joint_names.size(); i++)
             {
               jMsg.getJoints().setJoint(i, pt.positions[i]);
             }
-            
+
             jMsg.toRequest(msg);
             ROS_DEBUG("Sending joint point");
             if (this->robot_->sendAndReceiveMsg(msg, reply))
@@ -217,4 +217,3 @@ void JointTrajectoryHandler::trajectoryStop()
 
 } //joint_trajectory_handler
 } //motoman
-

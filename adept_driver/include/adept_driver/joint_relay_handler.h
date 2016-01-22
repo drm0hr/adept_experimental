@@ -35,7 +35,6 @@
 
 #include "simple_message/message_handler.h"
 #include "ros/ros.h"
-//#include <pr2_controllers_msgs/JointTrajectoryControllerState.h>
 #include <control_msgs/FollowJointTrajectoryAction.h>
 #include <control_msgs/FollowJointTrajectoryFeedback.h>
 #include <sensor_msgs/JointState.h>
