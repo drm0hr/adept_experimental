@@ -1,4 +1,4 @@
-<?xml version="1.0" ?>
+<?xml version="1" ?>
 <robot xmlns:xacro="http://ros.org/wiki/xacro">
   <xacro:macro name="adept_s650" params="prefix">
     <!-- link list -->
@@ -8,8 +8,8 @@
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/visual/base_link.stl"/>
         </geometry>
-        <material name="Grey">
-          <color rgba="128 128 128 1.0"/>
+        <material name="adept_grey">
+          <color rgba="0.5 0.5 0.5 1"/>
         </material>
       </visual>
       <collision>
@@ -17,8 +17,8 @@
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/collision/base_link.stl"/>
         </geometry>
-        <material name="Blue">
-          <color rgba="0 0 255 1.0"/>
+        <material name="blue">
+          <color rgba="0 0 1 1"/>
         </material>
       </collision>
     </link>
@@ -28,18 +28,14 @@
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/visual/link_1.stl"/>
         </geometry>
-        <material name="Grey">
-          <color rgba="128 128 128 1.0"/>
-        </material>
+        <material name="adept_grey"/>
       </visual>
       <collision>
         <origin rpy="0 0 0" xyz="0 0 0"/>
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/collision/link_1.stl"/>
         </geometry>
-        <material name="Blue">
-          <color rgba="0 0 255 1.0"/>
-        </material>
+        <material name="blue"/>
       </collision>
     </link>
     <link name="${prefix}link_2">
@@ -48,18 +44,14 @@
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/visual/link_2.stl"/>
         </geometry>
-        <material name="Grey">
-          <color rgba="128 128 128 1.0"/>
-        </material>
+        <material name="adept_grey"/>
       </visual>
       <collision>
         <origin rpy="0 1.5714 0" xyz="0 0 0"/>
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/collision/link_2.stl"/>
         </geometry>
-        <material name="Blue">
-          <color rgba="0 0 255 1.0"/>
-        </material>
+        <material name="blue"/>
       </collision>
     </link>
     <link name="${prefix}link_3">
@@ -68,18 +60,14 @@
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/visual/link_3.stl"/>
         </geometry>
-        <material name="Grey">
-          <color rgba="128 128 128 1.0"/>
-        </material>
+        <material name="adept_grey"/>
       </visual>
       <collision>
         <origin rpy="0 -1.5714 0" xyz="0 0 0"/>
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/collision/link_3.stl"/>
         </geometry>
-        <material name="Blue">
-          <color rgba="0 0 255 1.0"/>
-        </material>
+        <material name="blue"/>
       </collision>
     </link>
     <link name="${prefix}link_4">
@@ -88,18 +76,14 @@
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/visual/link_4.stl"/>
         </geometry>
-        <material name="Grey">
-          <color rgba="128 128 128 1.0"/>
-        </material>
+        <material name="adept_grey"/>
       </visual>
       <collision>
         <origin rpy="0 -1.5714 0" xyz="0 0 0"/>
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/collision/link_4.stl"/>
         </geometry>
-        <material name="Blue">
-          <color rgba="0 0 255 1.0"/>
-        </material>
+        <material name="blue"/>
       </collision>
     </link>
     <link name="${prefix}link_5">
@@ -108,18 +92,14 @@
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/visual/link_5.stl"/>
         </geometry>
-        <material name="Grey">
-          <color rgba="128 128 128 1.0"/>
-        </material>
+        <material name="adept_grey"/>
       </visual>
       <collision>
         <origin rpy="0 -1.5714 0" xyz="0 0 0"/>
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/collision/link_5.stl"/>
         </geometry>
-        <material name="Blue">
-          <color rgba="0 0 255 1.0"/>
-        </material>
+        <material name="blue"/>
       </collision>
     </link>
     <link name="${prefix}link_6">
@@ -128,18 +108,14 @@
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/visual/link_6.stl"/>
         </geometry>
-        <material name="Gray">
-          <color rgba="100 100 100 1.0"/>
-        </material>
+        <material name="adept_grey"/>
       </visual>
       <collision>
         <origin rpy="0 -1.5714 0" xyz="0 0 0"/>
         <geometry>
           <mesh filename="package://adept_s650_support/meshes/s650/collision/link_6.stl"/>
         </geometry>
-        <material name="Blue">
-          <color rgba="0 0 255 1.0"/>
-        </material>
+        <material name="blue"/>
       </collision>
     </link>
     <!-- end of linke list -->

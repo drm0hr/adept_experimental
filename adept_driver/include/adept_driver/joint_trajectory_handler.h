@@ -34,6 +34,7 @@
 
 #include "simple_message/smpl_msg_connection.h"
 #include "ros/ros.h"
+
 #include <boost/thread/thread.hpp>
 #include <sensor_msgs/JointState.h>
 #include <trajectory_msgs/JointTrajectory.h>

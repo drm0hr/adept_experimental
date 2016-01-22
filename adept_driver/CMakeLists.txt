@@ -4,16 +4,19 @@ project(adept_driver)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED)
+find_package(catkin REQUIRED COMPONENTS
+    std_msgs
+    roscpp
+    actionlib
+    trajectory_msgs actionlib_msgs
+    control_msgs sensor_msgs simple_message
+    urdf
+    # industrial_robot_client industrial_utils industrial_msgs
+)
 
 ## System dependencies are found with CMake's conventions
-# find_package(Boost REQUIRED COMPONENTS system)
+find_package(Boost REQUIRED COMPONENTS system thread)
 
-
-## Uncomment this if the package has a setup.py. This macro ensures
-## modules and global scripts declared therein get installed
-## See http://ros.org/doc/api/catkin/html/user_guide/setup_dot_py.html
-# catkin_python_setup()
 
 ################################################
 ## Declare ROS messages, services and actions ##
@@ -89,6 +92,7 @@ find_package(catkin REQUIRED)
 ###################################
 ## catkin specific configuration ##
 ###################################
+
 ## The catkin_package macro generates cmake config files for your package
 ## Declare things to be passed to dependent projects
 ## INCLUDE_DIRS: uncomment this if you package contains header files
@@ -96,9 +100,16 @@ find_package(catkin REQUIRED)
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-#  INCLUDE_DIRS include
+    INCLUDE_DIRS include
 #  LIBRARIES adept_driver
-#  CATKIN_DEPENDS other_catkin_pkg
+    CATKIN_DEPENDS
+        std_msgs
+        roscpp
+        actionlib
+        trajectory_msgs actionlib_msgs
+        control_msgs sensor_msgs simple_message
+        urdf
+        # industrial_robot_client industrial_utils industrial_msgs
 #  DEPENDS system_lib
 )
 
@@ -109,11 +120,15 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 # include_directories(include)
+include_directories(include V+ ${Boost_INCLUDE_DIR} ${catkin_INCLUDE_DIRS})
+add_definitions(-DLINUXSOCKETS=1)  #use linux sockets for communication
+add_definitions(-DROS=1)
 
 ## Declare a C++ library
-# add_library(adept_driver
-#   src/${PROJECT_NAME}/adept_driver.cpp
-# )
+# add_library(adept_joint_relay_handler
+#     src/${PROJECT_NAME}/joint_relay_handler.cpp)
+# target_link_libraries(adept_joint_relay_handler
+#     simple_message industrial_robot_client)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -121,7 +136,21 @@ catkin_package(
 # add_dependencies(adept_driver ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 ## Declare a C++ executable
-# add_executable(adept_driver_node src/adept_driver_node.cpp)
+add_executable(adept_robot_state
+    src/robot_state_node.cpp
+    src/joint_relay_handler.cpp)
+target_link_libraries(adept_robot_state
+    simple_message
+    ${catkin_LIBRARIES})
+
+# add_executable(adept_motion_streaming_interface
+#     src/motion_streaming_interface.cpp
+#     src/joint_trajectory_handler.cpp)
+# target_link_libraries(adept_robot_state
+#     simple_message
+#     sensor_msgs
+#     trajectory_msgs
+#     ${catkin_LIBRARIES})
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -152,6 +181,11 @@ catkin_package(
 #   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
 #   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 # )
+install(TARGETS
+    adept_robot_state
+
+    DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
+)
 
 ## Mark cpp header files for installation
 # install(DIRECTORY include/${PROJECT_NAME}/
@@ -159,6 +193,10 @@ catkin_package(
 #   FILES_MATCHING PATTERN "*.h"
 #   PATTERN ".svn" EXCLUDE
 # )
+foreach(dir launch V+)
+   install(DIRECTORY ${dir}/
+      DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
+endforeach(dir)
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
 # install(FILES
