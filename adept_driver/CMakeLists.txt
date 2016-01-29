@@ -11,7 +11,7 @@ find_package(catkin REQUIRED COMPONENTS
     trajectory_msgs actionlib_msgs
     control_msgs sensor_msgs simple_message
     urdf
-    # industrial_robot_client industrial_utils industrial_msgs
+    industrial_robot_client industrial_utils industrial_msgs
 )
 
 ## System dependencies are found with CMake's conventions
@@ -109,7 +109,7 @@ catkin_package(
         trajectory_msgs actionlib_msgs
         control_msgs sensor_msgs simple_message
         urdf
-        # industrial_robot_client industrial_utils industrial_msgs
+        industrial_robot_client industrial_utils industrial_msgs
 #  DEPENDS system_lib
 )
 
@@ -143,14 +143,18 @@ target_link_libraries(adept_robot_state
     simple_message
     ${catkin_LIBRARIES})
 
-# add_executable(adept_motion_streaming_interface
-#     src/motion_streaming_interface.cpp
-#     src/joint_trajectory_handler.cpp)
-# target_link_libraries(adept_robot_state
-#     simple_message
-#     sensor_msgs
-#     trajectory_msgs
-#     ${catkin_LIBRARIES})
+add_executable(adept_motion_streaming_interface
+    src/motion_streaming_interface.cpp
+    src/joint_trajectory_handler.cpp
+    src/joint_trajectory_downloader.cpp)
+target_link_libraries(adept_motion_streaming_interface
+    simple_message
+    ${catkin_LIBRARIES})
+
+add_executable(adept_joint_trajectory_action
+    src/joint_trajectory_action.cpp)
+target_link_libraries(adept_joint_trajectory_action
+    ${catkin_LIBRARIES})
 
 ## Add cmake target dependencies of the executable
 ## same as for the library above
@@ -183,7 +187,8 @@ target_link_libraries(adept_robot_state
 # )
 install(TARGETS
     adept_robot_state
-
+    adept_motion_streaming_interface
+    adept_joint_trajectory_action
     DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
@@ -193,10 +198,6 @@ install(TARGETS
 #   FILES_MATCHING PATTERN "*.h"
 #   PATTERN ".svn" EXCLUDE
 # )
-foreach(dir launch V+)
-   install(DIRECTORY ${dir}/
-      DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
-endforeach(dir)
 
 ## Mark other files for installation (e.g. launch and bag files, etc.)
 # install(FILES
@@ -204,6 +205,11 @@ endforeach(dir)
 #   # myfile2
 #   DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}
 # )
+foreach(dir launch V+)
+  install(
+    DIRECTORY ${dir}/
+    DESTINATION ${CATKIN_PACKAGE_SHARE_DESTINATION}/${dir})
+endforeach()
 
 #############
 ## Testing ##
